@@ -12,7 +12,7 @@ debug           = false
 debug-info      = 0
 split-debuginfo = 'off'  # Platform-specific.
 panic           = "abort"
-strip           = "symbols"
+#strip           = "symbols" enable this when new rust is release, it is unstable
 
 
 [dependencies]
