@@ -1,0 +1,27 @@
+[package]
+name    = "wych"
+version = "0.1.0"
+edition = "2021"
+authors = ["Ruzzie"]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[profile.release]
+opt-level       = "s"
+debug           = false
+debug-info      = 0
+split-debuginfo = 'off'  # Platform-specific.
+panic           = "abort"
+strip           = "symbols"
+
+
+[dependencies]
+clap         = { version = "3.0.14", features = ["derive", "color", "suggestions", "env"] }
+tinytemplate = "1.1"
+serde        = { version = "1.0", features = ["derive"] }
+os_info      = "3.2.0"
+gethostname  = "0.2.2"
+colored      = "2"
+
+[dev-dependencies]
+spectral = "0.6.0" # unit testing
