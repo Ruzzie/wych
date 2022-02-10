@@ -1,6 +1,6 @@
 [package]
 name    = "wych"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 authors = ["Ruzzie"]
 
@@ -12,7 +12,7 @@ debug           = false
 debug-info      = 0
 split-debuginfo = 'off'  # Platform-specific.
 panic           = "abort"
-#strip           = "symbols" enable this when new rust is release, it is unstable
+strip           = "symbols" #enable this when new rust is release, it is unstable
 
 
 [dependencies]

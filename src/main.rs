@@ -68,9 +68,9 @@ fn main() -> Result<(), Box<dyn Error>> {
     match args.commit {
         Some(commit_str) => {
             hash = commit_str;
-            println!("\t commit '{}'", hash)
+            println!("\t {} {}", "commit   :".bright_green(), hash.bright_green())
         }
-        None => println!("\t no commit info given :(")
+        None => println!("\t {}", "commit   : no commit info given :(".green())
     }
 
 
@@ -78,7 +78,7 @@ fn main() -> Result<(), Box<dyn Error>> {
     match as_unix_ts_millis(SystemTime::now()) {
         Ok(timestamp) => {
             ts = timestamp;
-            println!("\t timestamp ms {}", timestamp)
+            println!("\t {} {}", "timestamp:".bright_green(), timestamp.to_string().bright_green().underline())
         }
         Err(err) => eprintln!("error while getting ts {}", err.to_string())
     };
@@ -88,12 +88,12 @@ fn main() -> Result<(), Box<dyn Error>> {
     match args.source {
         Some(source_str) => {
             source = source_str;
-            println!("Source {}", source)
+            println!("\t {} {}", "source   :".bright_green(), source.bright_green().underline())
         }
         None => {
             let auto_source_str = format!("{}, {}", gethostname().to_string_lossy(), os_info::get().to_string());
 
-            println!("No source given we put: '{}' there.", auto_source_str)
+            println!("\t {}", format!("source   : none given we put '{}' there ;)", String::from(auto_source_str).underline()).green())
         }
     }
 
@@ -116,7 +116,7 @@ fn main() -> Result<(), Box<dyn Error>> {
     let file_contents = template_engine.render(app_version_model)?;
 
     fs::write(output_path, file_contents)?;
-    println!("successfully written file {}", path_str);
+    println!("successfully written file {}", path_str.bright_white().underline());
     Ok(())
 }
 
