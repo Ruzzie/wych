@@ -1,4 +1,4 @@
-﻿module AppVersion exposing (current, versionString)
+module AppVersion exposing (current, versionString, VersionInfo)
 
 import Time exposing (..)
 

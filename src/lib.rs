@@ -64,10 +64,6 @@ pub struct AppVersion {
 }
 
 #[cfg(test)]
-// #[macro_use]
-extern crate spectral;
-
-#[cfg(test)]
 use spectral::prelude::*;
 
 #[test]
@@ -77,7 +73,7 @@ fn load_default_elm_version_file() {
     let templates = Templates::load();
 
     //Assert
-    assert_that!(templates.elm_app_version_template_contents.into_owned()).starts_with("\u{feff}module ");
+    assert_that!(templates.elm_app_version_template_contents.into_owned()).starts_with("module ");
 }
 
 #[test]

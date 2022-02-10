@@ -124,12 +124,3 @@ fn as_unix_ts_millis(now: SystemTime) -> Result<u128, SystemTimeError>
 {
     return now.duration_since(SystemTime::UNIX_EPOCH).map(|elapsed| elapsed.as_millis());
 }
-
-
-#[cfg(test)]
-mod tests {
-    #[test]
-    fn it_works() {
-        assert_eq!(2 + 2, 4);
-    }
-}
