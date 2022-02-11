@@ -83,19 +83,18 @@ fn main() -> Result<(), Box<dyn Error>> {
         Err(err) => eprintln!("error while getting ts {}", err.to_string())
     };
 
-    let mut source = String::from("");
 
-    match args.source {
+    let source = match args.source {
         Some(source_str) => {
-            source = source_str;
-            println!("\t {} {}", "source   :".bright_green(), source.bright_green().underline())
+            println!("\t {} {}", "source   :".bright_green(), source_str.bright_green().underline());
+            source_str
         }
         None => {
             let auto_source_str = format!("{}, {}", gethostname().to_string_lossy(), os_info::get().to_string());
-
-            println!("\t {}", format!("source   : none given we put '{}' there ;)", String::from(auto_source_str).underline()).green())
+            println!("\t {}", format!("source   : none given we put '{}' there ;)", String::from(auto_source_str.clone()).underline()).green());
+            auto_source_str
         }
-    }
+    };
 
 
     let app_version_model = AppVersion {
